@@ -1,10 +1,25 @@
 <?php
+
 $title = isset($_POST['title']) ? $_POST['title'] : "";
 $date = isset($_POST['date']) ? $_POST['date'] : "";
-$jerne = isset($_POST['jerne']) ? $_POST['jerne'] : "";
+$genre_number = isset($_POST['genre_number']) ? $_POST['genre_number'] : "";
 $text = isset($_POST['text']) ? $_POST['text'] : "";
 
+$genre_list = [
+    1 => "うれしい",
+    2 => "かなしい",
+    3 => "たのしい",
+    4 => "はらだたしい",
+    5 => "その他"
+    ];
+
 // セッション保存
+session_start();
+
+$_SESSION['title'] = $title;
+$_SESSION['date'] = $date;
+$_SESSION['genre_number'] = $genre_number;
+$_SESSION['text'] = $text;
 
 ?>
 
@@ -33,8 +48,8 @@ $text = isset($_POST['text']) ? $_POST['text'] : "";
             <td><?php echo nl2br(htmlspecialchars($date)); ?></td>
         </tr>
         <tr>
-            <td>Jerne</td>
-            <td><?php echo nl2br(htmlspecialchars($jerne)); ?></td>
+            <td>Genre</td>
+            <td><?php echo nl2br(htmlspecialchars($genre_list[$genre_number])); ?></td>
         </tr>
         <tr>
             <td>Text</td>
@@ -43,5 +58,5 @@ $text = isset($_POST['text']) ? $_POST['text'] : "";
     </table>
 
     <a href="input.php" class="btn btn-primary">Back</a>
-    <!-- ><button type="submit" href="/complete.php" class="btn btn-success">完了</button> -->
+    <a href="complete.php" class="btn btn-success">登録</a>
 </body>
