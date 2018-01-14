@@ -1,3 +1,22 @@
+<?php
+
+$user = '';
+$pass = '';
+
+
+    $dbh = new PDO('mysql:host=localhost;dbname=practice_db;', $user, $pass);
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = 'SELECT * FROM `practice-1`';
+    $stmt = $dbh->query($sql);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $dbh = null;
+
+
+
+
+
+?>
+
 <!DOCTYPE html>
  <head>
     <meta charset="utf-8">
