@@ -1,7 +1,10 @@
 <?php
+require dirname(dirname(__FILE__)) . '/pass.php';
+require 'shared/head.php';
 
-$user = '';
-$pass = '';
+session_start();
+$user = $_SESSION['db_user'];
+$pass = $_SESSION['db_pass'];
 
 try {
     $dbh = new PDO('mysql:host=localhost;dbname=practice_db;', $user, $pass);
@@ -26,16 +29,6 @@ $genre_list = [
 
 ?>
 
-<!DOCTYPE html>
-<head>
-    <meta charset="utf-8">
-    <!-- BootstrapのCSS読み込み -->
-    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- jQuery読み込み -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- BootstrapのJS読み込み -->
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
-</head>
 <body>
     <h3>一覧</h3>
     <table class="table table-striped">

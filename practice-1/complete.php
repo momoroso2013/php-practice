@@ -1,4 +1,6 @@
 <?php
+require dirname(dirname(__FILE__)) . '/pass.php';
+require 'shared/head.php';
 
 session_start();
 $title = isset($_SESSION['title']) ? $_SESSION['title'] : exit("Error: title 最初からやり直してください");
@@ -6,8 +8,8 @@ $date = isset($_SESSION['date']) ? $_SESSION['date'] : exit("Error: date 最初�
 $genre = isset($_SESSION['genre_number']) ? (int) $_SESSION['genre_number'] : exit("Error: genre 最初からやり直してください");
 $text = isset($_SESSION['text']) ? $_SESSION['text'] : exit("Error: text 最初からやり直してください");
 
-$user = '';
-$pass = '';
+$user = $_SESSION['db_user'];
+$pass = $_SESSION['db_pass'];
 
 try {
     $dbh = new PDO('mysql:host=localhost;dbname=practice_db;', $user, $pass);
@@ -28,16 +30,6 @@ try {
 
 
 ?>
-<!DOCTYPE html>
-<head>
-    <meta charset="utf-8">
-    <!-- BootstrapのCSS読み込み -->
-    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- jQuery読み込み -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- BootstrapのJS読み込み -->
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
-</head>
 <body>
     <h3 class="">登録が完了しました</h3>
     <a href="index.php" class="btn btn-success">TOPに戻る</a>
