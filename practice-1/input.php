@@ -26,6 +26,7 @@ $genre_list = [
         </select>
         <label>Text</label>
         <textarea name="text" class="form-control col-3" rows="4" placeholder="何があったの？"><?php echo isset($_SESSION['text']) ? $_SESSION['text'] : "" ?></textarea>
+        <a href="index.php" class="btn btn-info">一覧に戻る</a>
         <input type="submit" value="確認" class="btn btn-success">
     </form>
 </body>

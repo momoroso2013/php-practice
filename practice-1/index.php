@@ -24,9 +24,6 @@ $genre_list = [
     4 => "はらだたしい",
     5 => "その他"
     ];
-
-
-
 ?>
 
 <body>
@@ -37,6 +34,8 @@ $genre_list = [
             <th>Date</th>
             <th>Genre</th>
             <th>Text</th>
+            <th></th>
+            <th></th>
         </tr>
             <?php foreach($registered_data as $a_data): ?>
         <tr>
@@ -44,6 +43,8 @@ $genre_list = [
             <td><?php echo htmlspecialchars($a_data['date']); ?></td>
             <td><?php echo htmlspecialchars($genre_list[$a_data['genre']]); ?></td>
             <td><?php echo nl2br(htmlspecialchars($a_data['text'])); ?></td>
+            <td><a href="edit.php?id=<?php echo htmlspecialchars($a_data['id']); ?>">編集</a></td>
+            <td><a href="delete.php?id=<?php echo htmlspecialchars($a_data['id']);?>">削除</a></td>
         </tr>
             <?php endforeach; ?>
     </table>
